@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-12-10T03:55:54.013Z",
+    "end": "2022-12-10T03:56:08.446Z",
+    "duration": 14433,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8be7392e-c578-4b73-afa0-ae86856dc325",
+      "title": "",
+      "fullFile": "cypress/e2e/Code/loginPage.cy.js",
+      "file": "cypress/e2e/Code/loginPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "69a483af-2df8-4d44-a41b-0096f370ff2c",
+          "title": "Login Page of Mero Padhai",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "If password is less than 8 letters",
+              "fullTitle": "Login Page of Mero Padhai If password is less than 8 letters",
+              "timedOut": null,
+              "duration": 9571,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const loginPage = new _LoginPage.default();\nloginPage.fillEmail(\"litime4584@3mkz.com\");\nloginPage.fillPassword(\"pass\");\nloginPage.submitBtn();\nloginPage.passwordEmpty().should('have.text', 'Password should be at least 8 characters.');",
+              "err": {},
+              "uuid": "9fad9dcd-7d3d-4155-afb8-76d780de9aed",
+              "parentUUID": "69a483af-2df8-4d44-a41b-0096f370ff2c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9fad9dcd-7d3d-4155-afb8-76d780de9aed"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9571,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
