@@ -14,6 +14,10 @@ This folder is dedicated to Cypress front-end testing for the eNirman.com websit
 
 This folder is dedicated to Cypress front-end testing for the meropadhai.com website.
 
+## Folder "API Learn"
+
+This folder contains specs created while learning API testing. 
+
 ## References
 
 The following folders contain references that I used for e2e testing and API testing:
