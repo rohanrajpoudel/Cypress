@@ -18,9 +18,9 @@ This folder is dedicated to Cypress front-end testing for the meropadhai.com web
 
 The following folders contain references that I used for e2e testing and API testing:
 
-- Reference 1
-- Reference 2
-- Reference 3
+- Reference 1 : API sample (Bishal dai)
+- Reference 2 : Meropadhai Cypress (UI testing)
+- Reference 3 : Race Group Mobile App (API testing)
 
 Feel free to explore each folder for more details on the respective projects.
 
