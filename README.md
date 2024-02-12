@@ -18,6 +18,10 @@ This folder is dedicated to Cypress front-end testing for the meropadhai.com web
 
 This folder contains specs created while learning API testing. 
 
+## Folder "yetiAT-API"
+
+This folder contains specs created while testing APIs for AgroTech.
+
 ## References
 
 The following folders contain references that I used for e2e testing and API testing:
