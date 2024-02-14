@@ -91,7 +91,7 @@ describe('Agrotech API Testing', () => {
     });
   });
   //it works well
-  it.only('POST', () => { 
+  it('POST', () => { 
     cy.request({
       method: 'POST',
       url: '/api/v1/role/sync',
