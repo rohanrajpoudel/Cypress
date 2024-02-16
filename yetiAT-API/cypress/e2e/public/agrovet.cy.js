@@ -4,7 +4,15 @@ import { publicAgrovetAPI } from "./APIs/publicAgrovet.api";
 
 describe('Agrovet API', () => {
     it('Agrovet-API', () => {
-        const qs = { page: 1, size: 10 };
+        const qs = { 
+            page: 1, 
+            size: 10,
+            longitude: 10,
+            latitude: 10,
+            rangeInKm: null,
+            enterprise: [1,1],
+            search: "null"
+        };
         publicAgrovetAPI('/', qs)
         .then((response)=>{
             expect(response.status).to.eq(200)
