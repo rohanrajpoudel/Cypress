@@ -1,14 +1,18 @@
 //AgroTech API-Testing
 
 import { defaultAuthAPI } from "./APIs/defaultAuth.api";
-let authToken = ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImlhdCI6MTcwODA3NzI1MywiZXhwIjoxNzA4MTYzNjUzfQ.qyiX15WWPxxY3S5gtI3ayRbYgYEOPWeJVCxA7pCU2iI","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImlhdCI6MTcwODA3NzQ2MiwiZXhwIjoxNzA4MTYzODYyfQ.CYkJvNcek4r_v_2oCopza9O0Ya6j7I5Loa60Db2C4hU"];
+let authToken = ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImlhdCI6MTcwODMxOTU0NCwiZXhwIjoxNzA4NDA1OTQ0fQ.12iWK_q4EKDRogmhJCFf4FrzDce-2edO90EVyP36TWU","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImlhdCI6MTcwODMxOTcwNCwiZXhwIjoxNzA4NDA2MTA0fQ.7fh9zzd7oPPyp_5M6XNMBdjfX83jBHbWEJcN46sYqFY"];
+
+export const getAdminToken = () => {
+  return authToken[0];
+}
 
 describe('Default -Auth', () => {
     // Login Successful
     // it.only('login-with-phone', ()=>{
     //     const body = {
     //         phoneNumber: "+9779840043605",
-    //         otp: "499736"
+    //         otp: "588410"
     //       }
     //     defaultAuthAPI('POST', '/login-with-phone-number', body)
     //     .then((response)=>{
@@ -29,7 +33,7 @@ describe('Default -Auth', () => {
     //     })
     //   })
     //login with email works well
-    it('login-with-email', ()=>{
+    it.only('login-with-email', ()=>{
         const body = {
             email: "admin@agri.tech",
             password: "password"
@@ -37,6 +41,8 @@ describe('Default -Auth', () => {
         defaultAuthAPI('POST', '/login-with-email', body)
         .then((response)=>{
             expect(response.status).to.eq(201)
+            cy.log(response.body.bearerToken)
+
         })
       })
     it('Refresh-Bearer-Token', () => {
@@ -54,7 +60,7 @@ describe('Default -Auth', () => {
     //Get profile works well
     it.only('Get-Profile', () => {
         const headers= {
-          authorization: `Bearer ${authToken[0]}`
+          authorization: `Bearer ${authToken[1]}`
         }
         defaultAuthAPI('GET', "/profile", null, headers)
         .then((response)=>{

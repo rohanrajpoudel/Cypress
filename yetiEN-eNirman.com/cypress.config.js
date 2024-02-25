@@ -13,6 +13,8 @@ module.exports = defineConfig({
       url: process.env["url"],
       id: process.env["id"],
       pass: process.env["pass"],
+      id1: process.env["id1"],
+      pass1: process.env["pass1"],
       // other envs
     },
   },

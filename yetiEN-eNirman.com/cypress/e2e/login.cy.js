@@ -1,16 +1,22 @@
 // const { url } = require("./constants")
+// const id = Cypress.env("id")
+// const pass = Cypress.env("pass")
+
 
 describe('Login into the system and also create a new project', () => {
   it('passes', () => {
-    logIn("poudelrohan58@gmail.com", "rrp09876")
-    // createNewProject("House Name","Place Name")
+    // logIn("poudelrohan58@gmail.com", "rrp09876")
+    // createNewProject("Finance Test","Best Location")
+    // cy.wait(2000)
   })
 })
-function createNewProject(projectName, location){
+export function createNewProject(projectName, location){
+    // logIn("poudelrohan58@gmail.com", "rrp09876")
     cy.get('[href="/admin/create-project"]').click()
     cy.get('[name="projectName"]').type(projectName)
     cy.get('[name="location"]').type(location)
     cy.get('[class="mt-8 primary-btn"]').click()
+    cy.wait(1000)
 }
 function logIn(id, pass){
   // Set a custom viewport resolution

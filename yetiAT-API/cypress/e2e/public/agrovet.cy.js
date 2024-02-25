@@ -16,9 +16,9 @@ describe('Agrovet API', () => {
         publicAgrovetAPI('/', qs)
         .then((response)=>{
             expect(response.status).to.eq(200)
-            cy.log("ID: "+response.body.entities[0].id)
-            cy.log("Status: "+response.body.entities[0].name)
-            cy.log("Location: "+response.body.entities[0].address)
+            // cy.log("ID: "+response.body.entities[0].id)
+            // cy.log("Status: "+response.body.entities[0].name)
+            // cy.log("Location: "+response.body.entities[0].address)
         })
     })
     it('ID-Agrovet-API', () => {

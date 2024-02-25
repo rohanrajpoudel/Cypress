@@ -4,52 +4,63 @@ const id = Cypress.env("id")
 const pass = Cypress.env("pass")
 import 'cypress-file-upload'
 
-
-// Set a custom viewport resolution
-
-
 describe("check and add some variation", () => {
     it('passes', () => {
         // variationList()
-        addVariation("name", -5500, "5 month", "          Description         ", "file1_0byte.pdf")
+        // logIn(id, pass)
+        // cy.get('[href="/admin/project-detail/6/architechure?projectName=New House&location=Srijana Chowk"]').click()
+        // add100Variation()
+        // addVariation("name", -5500, "5 month", "          Description         ", "file1_0byte.pdf")
         // addPayment("traNsfer", "2012-12-12", "statement", -5500, "abc", "Rohan Bank", 12345, 123345, "variation")
         // validityCheck()
     })
   })
-
+export function add100Variation(n){
+    
+    cy.get('.gap-10 > :nth-child(6)').click()
+    addFirstVariation()
+    for (let i = 1; i<=n; i++){
+        addVariation("Positive Variation "+i, Math.floor(Math.random() * 50000000) + 1, ""+i+" month", "          Description         "+i, "file1_0byte.pdf")
+        addVariation("Negative Variation "+i, -Math.floor(Math.random() * 50000000) + 1, "-"+i+" month", "          Description         "+i, "file1_0byte.pdf")
+    }
+}
 function variationList(){
-    logIn("poudelrohan58@gmail.com", "rrp09876")
-    cy.get('[href="/admin/project-detail/113/overview?projectName=Rohan&location=Zero"]').click()
-    // cy.get('[href="/admin/project-detail/114/overview?projectName=New House&location=Srijana Chowk"]').click()
-    cy.get('.gap-10 > :nth-child(4)').click()
+    logIn(id, pass)
+    cy.get('[href="/admin/project-detail/6/architechure?projectName=New House&location=Srijana Chowk"]').click()
+    cy.get('.gap-10 > :nth-child(3)').click()
     cy.get('.p-1 > :nth-child(3)').click()
 }
-
-function addVariation(title, price, time, description, filePath){
-    cy.log(id)
-    logIn(id, pass)
-    cy.get('[href="/admin/project-detail/113/overview?projectName=Rohan&location=Zero"]').click()
-    // cy.get('[href="/admin/project-detail/114/overview?projectName=New House&location=Srijana Chowk"]').click()
-    // cy.get('.gap-10 > :nth-child(7)').click()
-    cy.get('form.mt-8 > :nth-child(1) > #title').click()
-    cy.get('.primary-btn').contains("Create Variation").click()
-    // cy.get('form.mt-8').invoke('attr', 'style', 'visibility: visible')
-    // // cy.get('[placeholder="Eg. Variation of kitchen"]').type(title)
-    // cy.get('#priceVariation').type(price)
-    // cy.get('#timeVariation').type(time)
-    // cy.get('#description').type(description)
-    // cy.fixture(filePath).then(fileContent => {
-    //     cy.get('.mt-4 .primary-btn').invoke('val', fileContent)
-    //   })
-    cy.fixture('file1_0byte.pdf').then(fileContent => {
-        cy.get('.primary-btn > p').attachFile({
-          fileContent: fileContent.toString(),
-          fileName: 'file1_0byte.pdf',
-          mimeType: 'application/pdf', // Adjust the MIME type according to your file
-        })
+function addFirstVariation(){
+    cy.get('.my-32 > .primary-btn')
+    .contains('Add Variation')
+    .click()
+    cy.get('form.mt-8 > :nth-child(1) > #title').eq(0).type("First Var")
+    cy.get('input#priceVariation.input').invoke('attr', 'style', 'visibility: visible')
+    cy.get('input#priceVariation.input').eq(0).type(123)
+    cy.get('form.mt-8 > :nth-child(4) > #timeVariation').eq(0).type("Some time")
+    cy.get('form.mt-8 > :nth-child(5) > #description').eq(0).type("Some Description")
+    cy.get('label.mt-4 input[type="file"]').invoke('attr', 'class', '')
+    cy.get('label.mt-4 input[type="file"]').eq(0).attachFile({
+        filePath: "file1_0byte.pdf"
     })
-    cy.wait(2000)
-    cy.get('form.mt-8 > .mt-8').click()
+    cy.wait(100)
+    cy.get('form.mt-8 > .mt-8').eq(0).click()
+}
+function addVariation(title, price, time, description, fileName){
+    cy.get('div.flex.justify-between.items-center')
+    .contains('Create Variation')
+    .click()
+    cy.get('form.mt-8 > :nth-child(1) > #title').eq(1).type(title)
+    cy.get('input#priceVariation.input').invoke('attr', 'style', 'visibility: visible')
+    cy.get('input#priceVariation.input').eq(1).type(price)
+    cy.get('form.mt-8 > :nth-child(4) > #timeVariation').eq(1).type(time)
+    cy.get('form.mt-8 > :nth-child(5) > #description').eq(1).type(description)
+    cy.get('label.mt-4 input[type="file"]').invoke('attr', 'class', '')
+    cy.get('label.mt-4 input[type="file"]').eq(1).attachFile({
+        filePath: fileName
+    })
+    cy.wait(100)
+    cy.get('form.mt-8 > .mt-8').eq(1).click()
 }
 
 function addPayment(type, date, statement, amount, note=" ", bankName=" ", chequeID=" ", transactionID="", variation=""){
